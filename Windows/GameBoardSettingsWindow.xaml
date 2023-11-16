@@ -1,0 +1,19 @@
+﻿<Window x:Class="CodeNamesClientSide.Windows.GameBoardSettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeNamesClientSide.Windows"
+        mc:Ignorable="d"
+        Title="GameBoardSettings" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Media/GameBoardSettings.png" />
+        </Grid.Background>
+        <Image Source="../Media/Goback.png" Margin="-44,359,660,0" Name="Goback"></Image>
+        <ListBox x:Name="LibChat"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="62,77,366,200" SelectionChanged="ListBox_SelectionChanged"/>
+        <TextBox x:Name="TbMessage" HorizontalAlignment="Left" Margin="62,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" TextChanged="TextBox_TextChanged"/>
+        <Button x:Name="BtnSendMessage" Content="Send" HorizontalAlignment="Left" Margin="434,259,0,0" VerticalAlignment="Top" Height="18" Width="81" Click="BtnSendMessage_Click"/>
+
+    </Grid>
+</Window>

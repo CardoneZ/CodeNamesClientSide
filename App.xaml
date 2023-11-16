@@ -1,0 +1,36 @@
+﻿<Application x:Class="CodeNamesClientSide.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CodeNamesClientSide"
+             StartupUri="../Windows/LogInWindow.xaml">
+    <Application.Resources>
+        <!--Style for regular buttons-->
+        <Style x:Key="StandardRoundedButton" TargetType="Button">
+            <Setter Property="Height" Value="43"/>
+            <Setter Property="Width" Value="288"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="Green"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+				BorderBrush="{TemplateBinding BorderBrush}" 
+				BorderThickness="2" 
+				CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ff767B"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Application.Resources>
+</Application>

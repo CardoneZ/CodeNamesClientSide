@@ -1,0 +1,46 @@
+﻿<Window x:Class="CodeNamesClientSide.Windows.SocialWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p = "clr-namespace:CodeNamesClientSide.Properties"
+        xmlns:local="clr-namespace:CodeNamesClientSide.Windows"
+        mc:Ignorable="d"
+        Title="SocialWindow" Height="740" Width="1290">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="63*"/>
+            <RowDefinition Height="735*"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Media/GameBoard.png" Stretch="UniformToFill" />
+        </Grid.Background>
+        <Rectangle HorizontalAlignment="Left" Height="684" Margin="738,13,0,0" Stroke="#FF4D5E80" VerticalAlignment="Top" Width="513" Fill="#FF12273C" RadiusX="15" RadiusY="15" Grid.RowSpan="2"/>
+        <Border HorizontalAlignment="Left" Height="77" Margin="130,27,0,0" VerticalAlignment="Top" Width="579" CornerRadius="40" BorderThickness="4" BorderBrush="#FF110D0D" Grid.RowSpan="2" Background="#FFCA0000">
+            <TextBox TextWrapping="Wrap" Text="#ID Usuario" Margin="19,11,68,11" BorderBrush="{x:Null}" FontSize="33" Background="{x:Null}"/>
+        </Border>
+        <Image HorizontalAlignment="Left" Height="46" Margin="646,42,0,0" VerticalAlignment="Top" Width="46" Source="../Media/Goback.png" Grid.RowSpan="2"/>
+        <Rectangle HorizontalAlignment="Left" Height="576" Margin="130,67,0,0" Grid.Row="1" Stroke="Black" StrokeThickness="5" VerticalAlignment="Top" Width="562" Fill="Transparent" RadiusX="15" RadiusY="15" />
+        <Label Content="Buscar nuevo amigo" HorizontalAlignment="Left" Margin="795,0,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="33" FontWeight="Bold" FontFamily="Arial Rounded MT Bold" Foreground="White"/>
+        <TextBox x:Name = "TxtFriend" HorizontalAlignment="Left" Margin="793,64,0,0" Grid.Row="1" TextWrapping="Wrap" Text="#ID usuario" VerticalAlignment="Top" Width="403" Height="54" FontSize="36" BorderBrush="Black" Background="#FF061B30" Foreground="White"/>
+        <Button Content="Enviar Solicitud" HorizontalAlignment="Left" Margin="986,123,0,0" VerticalAlignment="Top" Height="51" Width="210" FontSize="24" FontWeight="Bold" Background="#FFC99C0E" Foreground="White" Grid.Row="1">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border  CornerRadius="30">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Rectangle HorizontalAlignment="Left" Height="75" Margin="25,27,0,0" Stroke="Black" StrokeThickness="5" VerticalAlignment="Top" Width="73" Fill="Transparent" RadiusX="15"  RadiusY="15" Grid.RowSpan="2" />
+        <Label Content="Solicitudes de amistad" HorizontalAlignment="Left" Margin="770,194,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="22" FontFamily="Arial Rounded MT Bold" Foreground="White" Height="48" Width="285" RenderTransformOrigin="0.498,1.258"/>
+        <Rectangle HorizontalAlignment="Left" Height="346" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="455" Fill="#FF061B30" RadiusX="15" RadiusY="15" RenderTransformOrigin="0.5,0.5" Margin="770,260,0,0"></Rectangle>
+        <Image HorizontalAlignment="Left" Height="76" Margin="24,26,0,0" VerticalAlignment="Top" Width="84" Source="../Media/Goback.png" Name="GoBack" Grid.RowSpan="2"/>
+        <ScrollViewer  Margin="130,78,598,70" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Grid.Row="1">
+            <WrapPanel x:Name ="FriendListDisplay" Height="100" Width="100"/>
+        </ScrollViewer>
+        <ScrollViewer Grid.Row="1" Margin="791,265,91,70" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <WrapPanel x:Name="RequestList" Orientation="Vertical"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
