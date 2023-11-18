@@ -67,15 +67,7 @@ namespace CodeNamesClientSide.Windows
                 PbConfirmPassword.Clear();
 
             }
-                TbEmail.Clear();
-                PbPassword.Clear();
-                TbNickname.Clear();
-                PbConfirmPassword.Clear();
-
-
         }
-
-
 
         private void BtnCancelSignUp_Click(object sender, RoutedEventArgs e)
         {

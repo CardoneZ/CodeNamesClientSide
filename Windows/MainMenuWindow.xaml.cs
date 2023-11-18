@@ -26,6 +26,8 @@ namespace CodeNamesClientSide.Windows
         private int idPlayer;
         CodeNamesService.FriendListServiceClient client;
 
+        
+
         public MainMenuWindow(int idPlayer)
         {
             InitializeComponent();
@@ -37,6 +39,14 @@ namespace CodeNamesClientSide.Windows
             musicManager = new MusicManager("Media/Music/FastestVersionSneakyAction.wav");
             musicManager.PlayMusic();
             this.idPlayer = idPlayer;
+
+            Closing += MainWindow_Closing;
+        }
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            InstanceContext context = new InstanceContext(this);
+            CodeNamesService.FriendListServiceClient clientFriend = new CodeNamesService.FriendListServiceClient(context);
+            clientFriend.RemovePlayerSession(idPlayer);
         }
 
         private void Settings_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -65,17 +75,24 @@ namespace CodeNamesClientSide.Windows
 
         private void BtnJoinGame_Click(object sender, RoutedEventArgs e)
         {
+            JoinRoomWindow joinRoomWindow = new JoinRoomWindow();
 
+            joinRoomWindow.Show();
+
+            this.Close();
+
+            musicManager.StopMusic();
+            base.OnClosed(e);
         }
 
         private void BtnCreateGame_Click(object sender, RoutedEventArgs e)
         {
             GameBoardSettings gameBoardSettingsWindow = new GameBoardSettings(musicManager,idPlayer);
-
-            gameBoardSettingsWindow.Show();
-
-            this.Close();
-
+            if (gameBoardSettingsWindow.CreateNewRoom(true))
+            {
+                gameBoardSettingsWindow.Show();
+                this.Close();
+            }
             musicManager.StopMusic();
             base.OnClosed(e);
         }

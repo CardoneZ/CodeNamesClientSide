@@ -1,0 +1,19 @@
+﻿<Window x:Class="CodeNamesClientSide.Windows.JoinRoomWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeNamesClientSide.Windows"
+        mc:Ignorable="d"
+        Title="JoinRoomWindow" Height="450" Width="800">
+    <Grid Margin="0,2,0,-2">
+        <Grid.Background>
+            <ImageBrush ImageSource="../Media/GameBoardSettings.png" />
+        </Grid.Background>
+        <Label Content="Join starting room" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Foreground="White"/>
+        <Label Content="Please enter the game room code" HorizontalAlignment="Center" Margin="0,132,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24"/>
+        <TextBox x:Name ="TbIdRoom" HorizontalAlignment="Center" Margin="0,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" Height="37" FontSize="24"  Background="#FFECEDF4"/>
+        <Button  Click="BtnJoinRoom_Click" Content="Join room" HorizontalAlignment="Left" Margin="255,292,0,0" VerticalAlignment="Top" FontSize="24" Height="41" Width="133"/>
+        <Button  Click="BtnGoBack_Click" Content="Go back" HorizontalAlignment="Left" Margin="417,292,0,0" VerticalAlignment="Top" FontSize="24" Height="41" Width="133" RenderTransformOrigin="1.447,1.102"/>
+    </Grid>
+</Window>
