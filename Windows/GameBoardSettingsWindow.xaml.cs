@@ -32,46 +32,28 @@ namespace CodeNamesClientSide.Windows
         private string roomId;
         private bool isConected = false;
         private bool isHost = false;
+        private List<string> chatMessages = new List<string>();
+
         public bool IsNewRoom { get { return isNewRoom; } set { isNewRoom = value; } }
         public string RoomId { get { return roomId; } set { roomId = value; } }
-
-        private List<string> chatMessages = new List<string>();
 
         public GameBoardSettings(MusicManager manager, int idPlayer)
         {
             InitializeComponent();
             LibChat.ItemsSource = chatMessages;
             musicManager = manager;
-            Goback.MouseLeftButtonDown += Goback_MouseLeftButtonDown;
             musicManager = new MusicManager("Media/Music/SolvingTheCrimeFaster.wav");
             musicManager.PlayMusic();
             this.idPlayer = idPlayer;
-        }
 
+
+        }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void BtnSendMessage_Click(object sender, RoutedEventArgs e)
-        {
-            String message = TbMessage.Text;
-            if (!string.IsNullOrEmpty(message))
-            {
-                chatMessages.Add(message);
-                LibChat.Items.Refresh();
-                TbMessage.Clear();
-                gameManagerServiceClient = new GameManagerServiceClient(new InstanceContext(this));
-                gameManagerServiceClient.SendMessage(message, Utilities.Player.PlayerClient.Username, RoomId);
-
-            }
-        }
         public bool CreateNewRoom(bool isNewRoom)
         {
             var status = true;
@@ -79,12 +61,12 @@ namespace CodeNamesClientSide.Windows
             this.isNewRoom = isNewRoom;
             if (isNewRoom)
             {
-                //btnStartGame.Visibility = Visibility.Visible;
-                //gridLobby.Visibility = Visibility.Visible;
+                BtnStartGame.Visibility = Visibility.Visible;
+
             }
             else
             {
-                //btnStartGame.Visibility = Visibility.Collapsed;
+                BtnStartGame.Visibility = Visibility.Collapsed;
             }
 
             try
@@ -94,16 +76,60 @@ namespace CodeNamesClientSide.Windows
             catch (EndpointNotFoundException ex)
             {
                 status = false;
+                Console.WriteLine(ex.Message);
+
+                MessageBox.Show(Properties.Resources.Exception_NoConnection_Message, Properties.Resources.Exception_NoConnection_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
             catch (CommunicationObjectFaultedException ex)
             {
                 status = false;
+                Console.WriteLine(ex.Message);
+
+                MessageBox.Show(Properties.Resources.Exception_NoConnection_Message, Properties.Resources.Exception_NoConnection_Title, MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (TimeoutException ex)
             {
                 status = false;
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(Properties.Resources.Exception_NoConnection_Message, Properties.Resources.Exception_NoConnection_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+
             }
             return status;
+        }
+
+        public bool CheckQuota()
+        {
+            gameManagerServiceClient = new GameManagerServiceClient(new InstanceContext(this));
+            var available = false;
+
+            try
+            {
+                available = gameManagerServiceClient.CheckQuota(RoomId);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(Properties.Resources.Exception_NoConnection_Message, Properties.Resources.Exception_NoConnection_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (CommunicationObjectFaultedException ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                MessageBox.Show(Properties.Resources.Exception_NoConnection_Message, Properties.Resources.Exception_NoConnection_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (TimeoutException ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(Properties.Resources.Exception_NoConnection_Message, Properties.Resources.Exception_NoConnection_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            finally
+            {
+                gameManagerServiceClient.Abort();
+            }
+
+            return available;
         }
 
         public void MessageCallBack(string message)
@@ -111,17 +137,6 @@ namespace CodeNamesClientSide.Windows
             chatMessages.Add(message);
             LibChat.Items.Refresh();
 
-        }
-
-        private void Goback_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            MainMenuWindow mainMenulWindow = new MainMenuWindow(idPlayer);
-
-            mainMenulWindow.Show();
-
-            this.Close();
-            musicManager.StopMusic();
-            base.OnClosed(e);
         }
 
         private void Start()
@@ -132,14 +147,78 @@ namespace CodeNamesClientSide.Windows
                 if (isNewRoom)
                 {
                     roomId = gameManagerServiceClient.GenerateRoomCode();
-                    //txtCode.Text = roomId;
                     gameManagerServiceClient.CreateRoom(Utilities.Player.PlayerClient.Username, roomId);
                     isHost = true;
+                    TbRoomCode.Text = roomId;
                 }
-                //txtCode.Text = roomId;
                 gameManagerServiceClient.Connect(Utilities.Player.PlayerClient.Username, roomId, " Un nuevo usuario se ha unido a la sala");
                 isConected = true;
             }
+        }
+
+        private void End()
+        {
+            if (isConected)
+            {
+                gameManagerServiceClient.Disconnect(Utilities.Player.PlayerClient.Username, roomId, "Un usuario ha dejado la sala");
+                gameManagerServiceClient.Abort();
+                gameManagerServiceClient = null;
+                isConected = false;
+            }
+        }
+
+        private void BtnCopyRoomCode_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(roomId);
+            MessageBox.Show(Properties.Resources.Copy_RoomCode_Message, Properties.Resources.Copy_RoomCode_Title, MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+
+        private void BtnStartGame_Click(object sender, RoutedEventArgs e)
+        {
+            GameBoard game = new GameBoard();
+            game.Show();
+            this.Close();
+        }
+
+        private void BtnLeaveRoom_Click(object sender, RoutedEventArgs e)
+        {
+            End();
+            MainMenuWindow mainMenuWindow = new MainMenuWindow(idPlayer);
+            mainMenuWindow.Show();
+            this.Close();
+        }
+
+        private void BtnSendMessage_Click(object sender, RoutedEventArgs e)
+        {
+            String message = TbMessage.Text;
+            if (!string.IsNullOrEmpty(message))
+            {
+                TbMessage.Clear();
+                gameManagerServiceClient = new GameManagerServiceClient(new InstanceContext(this));
+                gameManagerServiceClient.SendMessage(message, Utilities.Player.PlayerClient.Username, RoomId);
+
+            }
+        }
+
+        private void ButtonSpyRed_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonOperatorRed_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonSpyBlue_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonOperatorBlue_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

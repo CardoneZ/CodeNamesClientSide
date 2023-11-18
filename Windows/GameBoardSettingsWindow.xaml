@@ -5,15 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodeNamesClientSide.Windows"
         mc:Ignorable="d"
-        Title="GameBoardSettings" Height="450" Width="800">
-    <Grid>
+        Title="GameBoardSettings" Height="720" Width="1280">
+
+    <Grid Margin="0,2,0,-2">
         <Grid.Background>
             <ImageBrush ImageSource="../Media/GameBoardSettings.png" />
         </Grid.Background>
-        <Image Source="../Media/Goback.png" Margin="-44,359,660,0" Name="Goback"></Image>
-        <ListBox x:Name="LibChat"  d:ItemsSource="{d:SampleData ItemCount=5}" Margin="62,77,366,200" SelectionChanged="ListBox_SelectionChanged"/>
-        <TextBox x:Name="TbMessage" HorizontalAlignment="Left" Margin="62,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="263" TextChanged="TextBox_TextChanged"/>
-        <Button x:Name="BtnSendMessage" Content="Send" HorizontalAlignment="Left" Margin="434,259,0,0" VerticalAlignment="Top" Height="18" Width="81" Click="BtnSendMessage_Click"/>
+        <ListBox x:Name="LibChat" Background="BlanchedAlmond"  Margin="26,306,640,175" SelectionChanged="ListBox_SelectionChanged"/>
+        <TextBox x:Name="TbMessage" HorizontalAlignment="Left" Margin="26,554,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="465"  Height="42"/>
+        <Button x:Name="BtnSendMessage" Content="Send" HorizontalAlignment="Left" Margin="522,555,0,0" VerticalAlignment="Top" Height="42" Width="118" Click="BtnSendMessage_Click"/>
+        <Label Content="Room code: " HorizontalAlignment="Left" Margin="730,94,0,0" VerticalAlignment="Top" Foreground="White" FontSize="20" Height="43" Width="148"/>
+        <Label Content="Chat" HorizontalAlignment="Left" Margin="26,190,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.129,1.632" FontWeight="Bold" Foreground="#FFFDFDFD" FontSize="20" Height="37" Width="55"/>
+        <ListView x:Name="LivPlayers"  Background="BlanchedAlmond" Margin="26,86,640,441"/>
+        <Label Content="Chat" HorizontalAlignment="Left" Margin="26,263,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.129,1.632" FontWeight="Bold" Foreground="#FFFDFDFD" FontSize="20" Height="38" Width="55"/>
+        <Label Content="Players" HorizontalAlignment="Left" Margin="26,17,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.129,1.632" FontWeight="Bold" Foreground="#FFFDFDFD" FontSize="20" Height="37" Width="80"/>
+        <Button x:Name="BtnStartGame" Content="Start game" HorizontalAlignment="Left" Margin="907,555,0,0" VerticalAlignment="Top" Height="42" Width="140" Click="BtnStartGame_Click"/>
+        <Button x:Name="BtnLeaveRoom" Content="Leave room" HorizontalAlignment="Left" Margin="1076,555,0,107" Width="140" Click="BtnLeaveRoom_Click" RenderTransformOrigin="0.462,-0.174" Height="42"/>
+        <TextBlock x:Name="TbRoomCode" HorizontalAlignment="Left" IsEnabled="True" Margin="883,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.237,0.566" Background="#FFFFF8F8" Width="323" Height="35"/>
+        <Button x:Name="BtnCopyCodeRoom" Content="Copy room code" HorizontalAlignment="Left" Margin="1054,166,0,0" VerticalAlignment="Top" Height="42" Width="152" Click="BtnCopyRoomCode_Click"/>
+        <Rectangle Fill="IndianRed"  HorizontalAlignment="Left" Height="108" Margin="742,244,0,0" Stroke="Black" VerticalAlignment="Top" Width="289"/>
+        <Rectangle Fill="DodgerBlue"  HorizontalAlignment="Left" Height="100" Margin="742,409,0,0" Stroke="Black" VerticalAlignment="Top" Width="289"/>
+        <Label Content="Red team" HorizontalAlignment="Left" Margin="740,201,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.118,0.098" Foreground="White" FontSize="20"/>
+        <Label Content="Blue team" HorizontalAlignment="Left" Margin="742,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.118,0.098" Foreground="White" FontSize="20"/>
+        <Button Content="Spy master" HorizontalAlignment="Left" Margin="756,255,0,0" VerticalAlignment="Top" Height="35" Width="106" Click="ButtonSpyRed_Click"/>
+        <Button Content="Operator" HorizontalAlignment="Left" Margin="756,302,0,0" VerticalAlignment="Top" Height="35" Width="106" Click="ButtonOperatorRed_Click"/>
+        <Button Content="Spy master" HorizontalAlignment="Left" Margin="756,418,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.41,1.705" Height="35" Width="106" Click="ButtonSpyBlue_Click"/>
+        <Button Content="Operator" HorizontalAlignment="Left" Margin="756,464,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.41,1.705" Height="35" Width="106" Click="ButtonOperatorBlue_Click"/>
 
     </Grid>
 </Window>

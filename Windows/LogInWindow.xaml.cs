@@ -35,6 +35,8 @@ namespace CodeNamesClientSide.Windows
         }
 
 
+
+
         private void BtnExitGame_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
@@ -43,11 +45,8 @@ namespace CodeNamesClientSide.Windows
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
         {
             SignUpWindow signUpWindow = new SignUpWindow();
-
             signUpWindow.Show();
-
             this.Close();
-
             musicManager.StopMusic();
             base.OnClosed(e);
         }
@@ -63,9 +62,7 @@ namespace CodeNamesClientSide.Windows
             MainMenuWindow mainMenuWindow = new MainMenuWindow(0);
 
             mainMenuWindow.Show();
-
             this.Close();
-
             musicManager.StopMusic(); 
             base.OnClosed(e);
         }
