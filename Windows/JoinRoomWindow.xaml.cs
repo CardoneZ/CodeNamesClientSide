@@ -34,7 +34,7 @@ namespace CodeNamesClientSide.Windows
         {
             if (!String.IsNullOrWhiteSpace(TbIdRoom.Text))
             {
-                GameBoardSettings gameBoardSettings = new GameBoardSettings(musicManager,idPlayer);
+                GameBoardSettings gameBoardSettings = new GameBoardSettings(idPlayer);
                 {
                     WindowState = this.WindowState;
                     Left = this.Left;

@@ -32,12 +32,11 @@ namespace CodeNamesClientSide.Windows
         String password = "";
         String confirmationPassword = "";
 
-        private MusicManager musicManager;
         public SignUpWindow()
         {
             InitializeComponent();
-            musicManager = new MusicManager("Media/Music/WitnessTestimony.wav");
-            musicManager.PlayMusic();
+            MusicManager.MusicClient.PlayMusic();
+
         }
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
         {
@@ -77,7 +76,7 @@ namespace CodeNamesClientSide.Windows
 
             this.Close();
 
-            musicManager.StopMusic();
+            MusicManager.MusicClient.StopMusic();
             base.OnClosed(e);
 
         }

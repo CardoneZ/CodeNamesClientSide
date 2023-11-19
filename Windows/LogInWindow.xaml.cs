@@ -25,17 +25,13 @@ namespace CodeNamesClientSide.Windows
     /// </summary>
     public partial class LogInWindow : Window, IFriendListServiceCallback
     {
-        private MusicManager musicManager;
 
         public LogInWindow()
         {
             InitializeComponent();
-            musicManager = new MusicManager("Media/Music/BackgroundCheck.wav");
-            musicManager.PlayMusic();
+            MusicManager.MusicClient.PlayMusic(); // Acceso directo al Singleton MusicManager
+
         }
-
-
-
 
         private void BtnExitGame_Click(object sender, RoutedEventArgs e)
         {
@@ -47,7 +43,7 @@ namespace CodeNamesClientSide.Windows
             SignUpWindow signUpWindow = new SignUpWindow();
             signUpWindow.Show();
             this.Close();
-            musicManager.StopMusic();
+            MusicManager.MusicClient.StopMusic();
             base.OnClosed(e);
         }
 
@@ -63,7 +59,7 @@ namespace CodeNamesClientSide.Windows
 
             mainMenuWindow.Show();
             this.Close();
-            musicManager.StopMusic(); 
+            MusicManager.MusicClient.StopMusic(); 
             base.OnClosed(e);
         }
 

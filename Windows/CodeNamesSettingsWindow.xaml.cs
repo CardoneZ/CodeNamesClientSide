@@ -21,12 +21,10 @@ namespace CodeNamesClientSide.Windows
     {
         private MusicManager musicManager;
         private int idPlayer;
-        public CodeNamesSettingsWindow(MusicManager manager)
+        public CodeNamesSettingsWindow(int idPlayer)
         {
             InitializeComponent();
-            musicManager = manager;
             Goback.MouseLeftButtonDown += Goback_MouseLeftButtonDown;
-            musicManager = new MusicManager("Media/Music/SolvingTheCrimeFaster.wav");
             musicManager.PlayMusic();
             this.idPlayer = idPlayer;
         }

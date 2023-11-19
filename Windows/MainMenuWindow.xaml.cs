@@ -22,7 +22,6 @@ namespace CodeNamesClientSide.Windows
     /// </summary>
     public partial class MainMenuWindow : Window, IFriendListServiceCallback
     {
-        private MusicManager musicManager;
         private int idPlayer;
         CodeNamesService.FriendListServiceClient client;
 
@@ -36,8 +35,7 @@ namespace CodeNamesClientSide.Windows
             client.UpdatePlayerSession(idPlayer);
             Settings.MouseLeftButtonDown += Settings_MouseLeftButtonDown;
             Profile.MouseLeftButtonDown += Profile_MouseLeftButtonDown;
-            musicManager = new MusicManager("Media/Music/FastestVersionSneakyAction.wav");
-            musicManager.PlayMusic();
+            MusicManager.MusicClient.PlayMusic();
             this.idPlayer = idPlayer;
 
             Closing += MainWindow_Closing;
@@ -51,13 +49,13 @@ namespace CodeNamesClientSide.Windows
 
         private void Settings_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            CodeNamesSettingsWindow codeNamesSettingsWindow = new CodeNamesSettingsWindow(musicManager);
+            CodeNamesSettingsWindow codeNamesSettingsWindow = new CodeNamesSettingsWindow(idPlayer);
 
             codeNamesSettingsWindow.Show();
 
             this.Close();
 
-            musicManager.StopMusic();
+            MusicManager.MusicClient.StopMusic();
             base.OnClosed(e);
         }
 
@@ -69,7 +67,7 @@ namespace CodeNamesClientSide.Windows
 
             this.Close();
 
-            musicManager.StopMusic();
+            MusicManager.MusicClient.StopMusic();
             base.OnClosed(e);
         }
 
@@ -81,19 +79,19 @@ namespace CodeNamesClientSide.Windows
 
             this.Close();
 
-            musicManager.StopMusic();
+            MusicManager.MusicClient.StopMusic();
             base.OnClosed(e);
         }
 
         private void BtnCreateGame_Click(object sender, RoutedEventArgs e)
         {
-            GameBoardSettings gameBoardSettingsWindow = new GameBoardSettings(musicManager,idPlayer);
+            GameBoardSettings gameBoardSettingsWindow = new GameBoardSettings(idPlayer);
             if (gameBoardSettingsWindow.CreateNewRoom(true))
             {
                 gameBoardSettingsWindow.Show();
                 this.Close();
             }
-            musicManager.StopMusic();
+            MusicManager.MusicClient.StopMusic();
             base.OnClosed(e);
         }
 
@@ -113,7 +111,7 @@ namespace CodeNamesClientSide.Windows
 
             this.Close();
 
-            musicManager.StopMusic();
+            MusicManager.MusicClient.StopMusic();
             base.OnClosed(e);
         }
 
