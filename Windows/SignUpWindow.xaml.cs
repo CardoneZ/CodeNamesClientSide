@@ -26,6 +26,7 @@ namespace CodeNamesClientSide.Windows
     /// </summary>
     public partial class SignUpWindow : Window
     {
+        private MusicManager musicManager;
 
         String username = "";
         String email = "";
@@ -35,7 +36,8 @@ namespace CodeNamesClientSide.Windows
         public SignUpWindow()
         {
             InitializeComponent();
-            MusicManager.MusicClient.PlayMusic();
+            //musicManager = MusicManager.MusicClient;
+            //MusicManager.MusicClient.PlayMusic();
 
         }
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
@@ -71,12 +73,8 @@ namespace CodeNamesClientSide.Windows
         private void BtnCancelSignUp_Click(object sender, RoutedEventArgs e)
         {
             LogInWindow logInWindow = new LogInWindow();
-
-            logInWindow.Show();
-
             this.Close();
-
-            MusicManager.MusicClient.StopMusic();
+            logInWindow.Show();
             base.OnClosed(e);
 
         }

@@ -24,7 +24,7 @@
         <Label Content="{x:Static p:Resources.FontSizeSelector}" Foreground="Black" HorizontalAlignment="Left" Margin="65,352,0,0" VerticalAlignment="Top" Width="445" Height="60" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontFamily="Rockwell Extra Bold" FontSize="40"/>
         <Label Content="{x:Static p:Resources.LanguageSelector}" Foreground="Black" HorizontalAlignment="Left" Margin="65,439,0,0" VerticalAlignment="Top" Width="445" Height="60" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontFamily="Rockwell Extra Bold" FontSize="40"/>
         <Slider Name="volumeSlider" Orientation="Horizontal" Minimum="0" Maximum="100" Value="{Binding ElementName=musicManager, Path=Volume}" TickFrequency="10" Margin="535,259,340,405" ValueChanged="VolumeSlider_ValueChanged" Grid.ColumnSpan="2" />
-        <Button Content="{x:Static p:Resources.MusicSelector}" HorizontalAlignment="Left" Margin="390,147,0,0" VerticalAlignment="Top" Height="52" Width="250" Background="Black" Foreground="White" FontSize="20" FontFamily="Bahnschrift" Click="ToggleMusicButton_Click"/>
+        <Button Name ="BtnMusic" Content="{x:Static p:Resources.MusicSelector}" HorizontalAlignment="Left" Margin="390,147,0,0" VerticalAlignment="Top" Height="52" Width="250" Background="Black" Foreground="White" FontSize="20" FontFamily="Bahnschrift" Click="ToggleMusicButton_Click"/>
 
     </Grid>
 </Window>
