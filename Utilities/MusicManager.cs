@@ -1,4 +1,6 @@
 ﻿using NAudio.Wave;
+using System.Data.Entity.ModelConfiguration.Configuration;
+using System.Windows.Controls;
 
 public class MusicManager
 {
@@ -6,6 +8,23 @@ public class MusicManager
     private AudioFileReader audioFileReader;
     private bool isMusicEnabled = true;
     private float volume = 0.5f; // Establece un valor predeterminado para el volumen
+
+    #region Singletone
+    private static MusicManager musicClient;
+
+    public static MusicManager MusicClient
+    {
+        get
+        {
+            if (musicClient == null)
+            {
+                musicClient = new MusicManager("Media/Music/BackgroundCheck.wav");
+            }
+            return musicClient;
+        }
+    }
+
+    #endregion
 
     public MusicManager(string musicFilePath)
     {

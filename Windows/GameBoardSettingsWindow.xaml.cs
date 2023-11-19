@@ -25,7 +25,6 @@ namespace CodeNamesClientSide.Windows
     public partial class GameBoardSettings : Window,IGameManagerServiceCallback
     {
         private int idPlayer;
-        private MusicManager musicManager;
         private CodeNamesService.Player[] playerList;
         private GameManagerServiceClient gameManagerServiceClient;
         private bool isNewRoom;
@@ -37,13 +36,11 @@ namespace CodeNamesClientSide.Windows
         public bool IsNewRoom { get { return isNewRoom; } set { isNewRoom = value; } }
         public string RoomId { get { return roomId; } set { roomId = value; } }
 
-        public GameBoardSettings(MusicManager manager, int idPlayer)
+        public GameBoardSettings(int idPlayer)
         {
             InitializeComponent();
             LibChat.ItemsSource = chatMessages;
-            musicManager = manager;
-            musicManager = new MusicManager("Media/Music/SolvingTheCrimeFaster.wav");
-            musicManager.PlayMusic();
+            MusicManager.MusicClient.PlayMusic();
             this.idPlayer = idPlayer;
 
 
@@ -203,7 +200,7 @@ namespace CodeNamesClientSide.Windows
 
         private void ButtonSpyRed_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void ButtonOperatorRed_Click(object sender, RoutedEventArgs e)
