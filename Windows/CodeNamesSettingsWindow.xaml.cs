@@ -25,13 +25,22 @@ namespace CodeNamesClientSide.Windows
         {
             InitializeComponent();
             Goback.MouseLeftButtonDown += Goback_MouseLeftButtonDown;
-            musicManager.PlayMusic();
             this.idPlayer = idPlayer;
         }
 
         private void ToggleMusicButton_Click(object sender, RoutedEventArgs e)
         {
-            musicManager.ToggleMusic();
+            MusicManager.MusicClient.ToggleMusic();
+
+            // Toggle para cambiar entre encendido y apagado
+            if (MusicManager.MusicClient.IsMusicEnabled)
+            {
+                BtnMusic.Content = "Tur off music"; // Cambiar el contenido del botón a "Música apagada"
+            }
+            else
+            {
+                BtnMusic.Content = "Turn on music"; // Cambiar el contenido del botón a "Música encendida"
+            }
         }
 
         private void Goback_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -41,15 +50,14 @@ namespace CodeNamesClientSide.Windows
             mainMenulWindow.Show();
 
             this.Close();
-            musicManager.StopMusic();
             base.OnClosed(e);
         }
 
         private void VolumeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (musicManager != null)
+            if (MusicManager.MusicClient != null)
             {
-                musicManager.Volume = (float)volumeSlider.Value;
+                MusicManager.MusicClient.Volume = (float)volumeSlider.Value;
             }
         }
     }

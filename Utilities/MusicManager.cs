@@ -12,17 +12,10 @@ public class MusicManager
     #region Singletone
     private static MusicManager musicClient;
 
-    public static MusicManager MusicClient
-    {
-        get
-        {
-            if (musicClient == null)
-            {
-                musicClient = new MusicManager("Media/Music/BackgroundCheck.wav");
-            }
-            return musicClient;
-        }
-    }
+    public static MusicManager MusicClient { get { return musicClient; } set { musicClient = value; } }
+    
+
+    
 
     #endregion
 
