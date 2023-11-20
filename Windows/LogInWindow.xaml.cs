@@ -23,7 +23,7 @@ namespace CodeNamesClientSide.Windows
     /// <summary>
     /// Interaction logic for LogInWindow.xaml
     /// </summary>
-    public partial class LogInWindow : Window, IFriendListServiceCallback
+    public partial class LogInWindow : Window 
     {
         private MusicManager musicManager;
         public LogInWindow()
@@ -85,7 +85,7 @@ namespace CodeNamesClientSide.Windows
 
                     {
                         InstanceContext context = new InstanceContext(this);
-                        CodeNamesService.PlayerManagerServiceClient client = new CodeNamesService.PlayerManagerServiceClient();
+                        CodeNamesService.PlayerManagerServiceClient client = new CodeNamesService.PlayerManagerServiceClient(context);
 
 
                         var playerLogin = client.Login(username, Utilities.PasswordEncryptor.HashPassword(password));
@@ -93,7 +93,7 @@ namespace CodeNamesClientSide.Windows
                         if (playerLogin != null)
                         {
                             CodeNamesService.FriendListServiceClient clientFriend = new CodeNamesService.FriendListServiceClient(context);
-                            clientFriend.SavePlayerSession(playerLogin.IdPlayer);
+                            client.SavePlayerSession(playerLogin.IdPlayer);
                             Utilities.Player.PlayerClient = new Utilities.Player()
                                 {
                                     Idplayer = playerLogin.IdPlayer,

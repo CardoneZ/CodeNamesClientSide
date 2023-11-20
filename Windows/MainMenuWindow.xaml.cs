@@ -24,7 +24,7 @@ namespace CodeNamesClientSide.Windows
     public partial class MainMenuWindow : Window, IFriendListServiceCallback
     {
         private int idPlayer;
-        CodeNamesService.FriendListServiceClient client;
+        CodeNamesService.PlayerManagerServiceClient client;
         private MusicManager musicManager;
 
         
@@ -33,7 +33,7 @@ namespace CodeNamesClientSide.Windows
         {
             InitializeComponent();
             InstanceContext context = new InstanceContext(this); 
-            client = new CodeNamesService.FriendListServiceClient(context);
+            client = new CodeNamesService.PlayerManagerServiceClient(context);
             client.UpdatePlayerSession(idPlayer);
             Settings.MouseLeftButtonDown += Settings_MouseLeftButtonDown;
             Profile.MouseLeftButtonDown += Profile_MouseLeftButtonDown;
@@ -43,7 +43,7 @@ namespace CodeNamesClientSide.Windows
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             InstanceContext context = new InstanceContext(this);
-            CodeNamesService.FriendListServiceClient clientFriend = new CodeNamesService.FriendListServiceClient(context);
+            CodeNamesService.PlayerManagerServiceClient clientFriend = new CodeNamesService.PlayerManagerServiceClient(context);
             clientFriend.RemovePlayerSession(idPlayer);
         }
 
@@ -86,7 +86,7 @@ namespace CodeNamesClientSide.Windows
         private void BtnExitGame_Click(object sender, RoutedEventArgs e)
         {
             InstanceContext context = new InstanceContext(this);
-            CodeNamesService.FriendListServiceClient clientFriend = new CodeNamesService.FriendListServiceClient(context);
+            CodeNamesService.PlayerManagerServiceClient clientFriend = new CodeNamesService.PlayerManagerServiceClient(context);
             clientFriend.RemovePlayerSession(idPlayer);
             Environment.Exit(0);
         }
