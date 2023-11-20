@@ -340,17 +340,29 @@ namespace CodeNamesClientSide.CodeNamesService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/Login", ReplyAction="http://tempuri.org/IPlayerManagerService/LoginResponse")]
         System.Threading.Tasks.Task<CodeNamesClientSide.CodeNamesService.Player> LoginAsync(string nickname, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/ShowUsersAccounts", ReplyAction="http://tempuri.org/IPlayerManagerService/ShowUsersAccountsResponse")]
-        void ShowUsersAccounts();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/ShowUsersAccounts", ReplyAction="http://tempuri.org/IPlayerManagerService/ShowUsersAccountsResponse")]
-        System.Threading.Tasks.Task ShowUsersAccountsAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/GetCurrentUsers", ReplyAction="http://tempuri.org/IPlayerManagerService/GetCurrentUsersResponse")]
         System.Collections.Generic.Dictionary<int, object> GetCurrentUsers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/GetCurrentUsers", ReplyAction="http://tempuri.org/IPlayerManagerService/GetCurrentUsersResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, object>> GetCurrentUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/SavePlayerSession", ReplyAction="http://tempuri.org/IPlayerManagerService/SavePlayerSessionResponse")]
+        void SavePlayerSession(int idPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/SavePlayerSession", ReplyAction="http://tempuri.org/IPlayerManagerService/SavePlayerSessionResponse")]
+        System.Threading.Tasks.Task SavePlayerSessionAsync(int idPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/RemovePlayerSession", ReplyAction="http://tempuri.org/IPlayerManagerService/RemovePlayerSessionResponse")]
+        void RemovePlayerSession(int idPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/RemovePlayerSession", ReplyAction="http://tempuri.org/IPlayerManagerService/RemovePlayerSessionResponse")]
+        System.Threading.Tasks.Task RemovePlayerSessionAsync(int idPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/UpdatePlayerSession", ReplyAction="http://tempuri.org/IPlayerManagerService/UpdatePlayerSessionResponse")]
+        void UpdatePlayerSession(int idPlayer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManagerService/UpdatePlayerSession", ReplyAction="http://tempuri.org/IPlayerManagerService/UpdatePlayerSessionResponse")]
+        System.Threading.Tasks.Task UpdatePlayerSessionAsync(int idPlayer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -361,7 +373,7 @@ namespace CodeNamesClientSide.CodeNamesService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class PlayerManagerServiceClient : System.ServiceModel.ClientBase<CodeNamesClientSide.CodeNamesService.IPlayerManagerService>, CodeNamesClientSide.CodeNamesService.IPlayerManagerService {
         
-        public PlayerManagerServiceClient() {
+        public PlayerManagerServiceClient(System.ServiceModel.InstanceContext context) {
         }
         
         public PlayerManagerServiceClient(string endpointConfigurationName) : 
@@ -396,20 +408,36 @@ namespace CodeNamesClientSide.CodeNamesService {
             return base.Channel.LoginAsync(nickname, password);
         }
         
-        public void ShowUsersAccounts() {
-            base.Channel.ShowUsersAccounts();
-        }
-        
-        public System.Threading.Tasks.Task ShowUsersAccountsAsync() {
-            return base.Channel.ShowUsersAccountsAsync();
-        }
-        
         public System.Collections.Generic.Dictionary<int, object> GetCurrentUsers() {
             return base.Channel.GetCurrentUsers();
         }
         
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<int, object>> GetCurrentUsersAsync() {
             return base.Channel.GetCurrentUsersAsync();
+        }
+        
+        public void SavePlayerSession(int idPlayer) {
+            base.Channel.SavePlayerSession(idPlayer);
+        }
+        
+        public System.Threading.Tasks.Task SavePlayerSessionAsync(int idPlayer) {
+            return base.Channel.SavePlayerSessionAsync(idPlayer);
+        }
+        
+        public void RemovePlayerSession(int idPlayer) {
+            base.Channel.RemovePlayerSession(idPlayer);
+        }
+        
+        public System.Threading.Tasks.Task RemovePlayerSessionAsync(int idPlayer) {
+            return base.Channel.RemovePlayerSessionAsync(idPlayer);
+        }
+        
+        public void UpdatePlayerSession(int idPlayer) {
+            base.Channel.UpdatePlayerSession(idPlayer);
+        }
+        
+        public System.Threading.Tasks.Task UpdatePlayerSessionAsync(int idPlayer) {
+            return base.Channel.UpdatePlayerSessionAsync(idPlayer);
         }
     }
     
@@ -495,18 +523,6 @@ namespace CodeNamesClientSide.CodeNamesService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/MakeFriendRequest", ReplyAction="http://tempuri.org/IFriendListService/MakeFriendRequestResponse")]
         System.Threading.Tasks.Task<int> MakeFriendRequestAsync(int IdPlayer, string namePlayer);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/SavePlayerSession", ReplyAction="http://tempuri.org/IFriendListService/SavePlayerSessionResponse")]
-        void SavePlayerSession(int idPlayer);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/SavePlayerSession", ReplyAction="http://tempuri.org/IFriendListService/SavePlayerSessionResponse")]
-        System.Threading.Tasks.Task SavePlayerSessionAsync(int idPlayer);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/RemovePlayerSession", ReplyAction="http://tempuri.org/IFriendListService/RemovePlayerSessionResponse")]
-        void RemovePlayerSession(int idPlayer);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/RemovePlayerSession", ReplyAction="http://tempuri.org/IFriendListService/RemovePlayerSessionResponse")]
-        System.Threading.Tasks.Task RemovePlayerSessionAsync(int idPlayer);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/AcceptFriendRequest", ReplyAction="http://tempuri.org/IFriendListService/AcceptFriendRequestResponse")]
         int AcceptFriendRequest(int IdRequest);
         
@@ -518,12 +534,6 @@ namespace CodeNamesClientSide.CodeNamesService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/RejectFriendRequest", ReplyAction="http://tempuri.org/IFriendListService/RejectFriendRequestResponse")]
         System.Threading.Tasks.Task<int> RejectFriendRequestAsync(int IdRequest);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/UpdatePlayerSession", ReplyAction="http://tempuri.org/IFriendListService/UpdatePlayerSessionResponse")]
-        void UpdatePlayerSession(int idPlayer);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/UpdatePlayerSession", ReplyAction="http://tempuri.org/IFriendListService/UpdatePlayerSessionResponse")]
-        System.Threading.Tasks.Task UpdatePlayerSessionAsync(int idPlayer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendListService/GetFriends", ReplyAction="http://tempuri.org/IFriendListService/GetFriendsResponse")]
         CodeNamesClientSide.CodeNamesService.Player1[] GetFriends(int idPlayer);
@@ -590,22 +600,6 @@ namespace CodeNamesClientSide.CodeNamesService {
             return base.Channel.MakeFriendRequestAsync(IdPlayer, namePlayer);
         }
         
-        public void SavePlayerSession(int idPlayer) {
-            base.Channel.SavePlayerSession(idPlayer);
-        }
-        
-        public System.Threading.Tasks.Task SavePlayerSessionAsync(int idPlayer) {
-            return base.Channel.SavePlayerSessionAsync(idPlayer);
-        }
-        
-        public void RemovePlayerSession(int idPlayer) {
-            base.Channel.RemovePlayerSession(idPlayer);
-        }
-        
-        public System.Threading.Tasks.Task RemovePlayerSessionAsync(int idPlayer) {
-            return base.Channel.RemovePlayerSessionAsync(idPlayer);
-        }
-        
         public int AcceptFriendRequest(int IdRequest) {
             return base.Channel.AcceptFriendRequest(IdRequest);
         }
@@ -620,14 +614,6 @@ namespace CodeNamesClientSide.CodeNamesService {
         
         public System.Threading.Tasks.Task<int> RejectFriendRequestAsync(int IdRequest) {
             return base.Channel.RejectFriendRequestAsync(IdRequest);
-        }
-        
-        public void UpdatePlayerSession(int idPlayer) {
-            base.Channel.UpdatePlayerSession(idPlayer);
-        }
-        
-        public System.Threading.Tasks.Task UpdatePlayerSessionAsync(int idPlayer) {
-            return base.Channel.UpdatePlayerSessionAsync(idPlayer);
         }
         
         public CodeNamesClientSide.CodeNamesService.Player1[] GetFriends(int idPlayer) {

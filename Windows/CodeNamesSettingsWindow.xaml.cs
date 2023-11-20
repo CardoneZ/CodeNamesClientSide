@@ -35,11 +35,11 @@ namespace CodeNamesClientSide.Windows
             // Toggle para cambiar entre encendido y apagado
             if (MusicManager.MusicClient.IsMusicEnabled)
             {
-                BtnMusic.Content = "Tur off music"; // Cambiar el contenido del botón a "Música apagada"
+                BtnMusic.Content = "Tur off music";
             }
             else
             {
-                BtnMusic.Content = "Turn on music"; // Cambiar el contenido del botón a "Música encendida"
+                BtnMusic.Content = "Turn on music"; 
             }
         }
 

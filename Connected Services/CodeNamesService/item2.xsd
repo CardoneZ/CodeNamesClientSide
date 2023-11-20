@@ -32,16 +32,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ShowUsersAccounts">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ShowUsersAccountsResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetCurrentUsers">
     <xs:complexType>
       <xs:sequence />
@@ -52,6 +42,42 @@
       <xs:sequence>
         <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetCurrentUsersResult" nillable="true" type="q2:ArrayOfKeyValueOfintanyType" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SavePlayerSession">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SavePlayerSessionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemovePlayerSession">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemovePlayerSessionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePlayerSession">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePlayerSessionResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="SubscribeToUserEvents">
@@ -93,30 +119,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SavePlayerSession">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SavePlayerSessionResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RemovePlayerSession">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RemovePlayerSessionResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="AcceptFriendRequest">
     <xs:complexType>
       <xs:sequence>
@@ -143,18 +145,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="RejectFriendRequestResult" type="xs:int" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdatePlayerSession">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idPlayer" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdatePlayerSessionResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetFriends">

@@ -137,17 +137,29 @@
   <wsdl:message name="IPlayerManagerService_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
-  <wsdl:message name="IPlayerManagerService_ShowUsersAccounts_InputMessage">
-    <wsdl:part name="parameters" element="tns:ShowUsersAccounts" />
-  </wsdl:message>
-  <wsdl:message name="IPlayerManagerService_ShowUsersAccounts_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ShowUsersAccountsResponse" />
-  </wsdl:message>
   <wsdl:message name="IPlayerManagerService_GetCurrentUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentUsers" />
   </wsdl:message>
   <wsdl:message name="IPlayerManagerService_GetCurrentUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManagerService_SavePlayerSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlayerSession" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManagerService_SavePlayerSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlayerSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManagerService_RemovePlayerSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePlayerSession" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManagerService_RemovePlayerSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePlayerSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManagerService_UpdatePlayerSession_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlayerSession" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManagerService_UpdatePlayerSession_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlayerSessionResponse" />
   </wsdl:message>
   <wsdl:message name="ILobbyService_SubscribeToUserEvents_InputMessage">
     <wsdl:part name="parameters" element="tns:SubscribeToUserEvents" />
@@ -167,18 +179,6 @@
   <wsdl:message name="IFriendListService_MakeFriendRequest_OutputMessage">
     <wsdl:part name="parameters" element="tns:MakeFriendRequestResponse" />
   </wsdl:message>
-  <wsdl:message name="IFriendListService_SavePlayerSession_InputMessage">
-    <wsdl:part name="parameters" element="tns:SavePlayerSession" />
-  </wsdl:message>
-  <wsdl:message name="IFriendListService_SavePlayerSession_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SavePlayerSessionResponse" />
-  </wsdl:message>
-  <wsdl:message name="IFriendListService_RemovePlayerSession_InputMessage">
-    <wsdl:part name="parameters" element="tns:RemovePlayerSession" />
-  </wsdl:message>
-  <wsdl:message name="IFriendListService_RemovePlayerSession_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemovePlayerSessionResponse" />
-  </wsdl:message>
   <wsdl:message name="IFriendListService_AcceptFriendRequest_InputMessage">
     <wsdl:part name="parameters" element="tns:AcceptFriendRequest" />
   </wsdl:message>
@@ -190,12 +190,6 @@
   </wsdl:message>
   <wsdl:message name="IFriendListService_RejectFriendRequest_OutputMessage">
     <wsdl:part name="parameters" element="tns:RejectFriendRequestResponse" />
-  </wsdl:message>
-  <wsdl:message name="IFriendListService_UpdatePlayerSession_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdatePlayerSession" />
-  </wsdl:message>
-  <wsdl:message name="IFriendListService_UpdatePlayerSession_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdatePlayerSessionResponse" />
   </wsdl:message>
   <wsdl:message name="IFriendListService_GetFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFriends" />
@@ -284,13 +278,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManagerService/Login" message="tns:IPlayerManagerService_Login_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManagerService/LoginResponse" message="tns:IPlayerManagerService_Login_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ShowUsersAccounts">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManagerService/ShowUsersAccounts" message="tns:IPlayerManagerService_ShowUsersAccounts_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManagerService/ShowUsersAccountsResponse" message="tns:IPlayerManagerService_ShowUsersAccounts_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetCurrentUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManagerService/GetCurrentUsers" message="tns:IPlayerManagerService_GetCurrentUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManagerService/GetCurrentUsersResponse" message="tns:IPlayerManagerService_GetCurrentUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePlayerSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManagerService/SavePlayerSession" message="tns:IPlayerManagerService_SavePlayerSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManagerService/SavePlayerSessionResponse" message="tns:IPlayerManagerService_SavePlayerSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemovePlayerSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManagerService/RemovePlayerSession" message="tns:IPlayerManagerService_RemovePlayerSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManagerService/RemovePlayerSessionResponse" message="tns:IPlayerManagerService_RemovePlayerSession_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePlayerSession">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManagerService/UpdatePlayerSession" message="tns:IPlayerManagerService_UpdatePlayerSession_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManagerService/UpdatePlayerSessionResponse" message="tns:IPlayerManagerService_UpdatePlayerSession_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ILobbyService">
@@ -312,14 +314,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/MakeFriendRequest" message="tns:IFriendListService_MakeFriendRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/MakeFriendRequestResponse" message="tns:IFriendListService_MakeFriendRequest_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SavePlayerSession">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/SavePlayerSession" message="tns:IFriendListService_SavePlayerSession_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/SavePlayerSessionResponse" message="tns:IFriendListService_SavePlayerSession_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RemovePlayerSession">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/RemovePlayerSession" message="tns:IFriendListService_RemovePlayerSession_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/RemovePlayerSessionResponse" message="tns:IFriendListService_RemovePlayerSession_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="AcceptFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/AcceptFriendRequest" message="tns:IFriendListService_AcceptFriendRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/AcceptFriendRequestResponse" message="tns:IFriendListService_AcceptFriendRequest_OutputMessage" />
@@ -327,10 +321,6 @@
     <wsdl:operation name="RejectFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/RejectFriendRequest" message="tns:IFriendListService_RejectFriendRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/RejectFriendRequestResponse" message="tns:IFriendListService_RejectFriendRequest_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UpdatePlayerSession">
-      <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/UpdatePlayerSession" message="tns:IFriendListService_UpdatePlayerSession_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IFriendListService/UpdatePlayerSessionResponse" message="tns:IFriendListService_UpdatePlayerSession_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendListService/GetFriends" message="tns:IFriendListService_GetFriends_InputMessage" />
@@ -410,8 +400,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ShowUsersAccounts">
-      <soap12:operation soapAction="http://tempuri.org/IPlayerManagerService/ShowUsersAccounts" style="document" />
+    <wsdl:operation name="GetCurrentUsers">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManagerService/GetCurrentUsers" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -419,8 +409,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetCurrentUsers">
-      <soap12:operation soapAction="http://tempuri.org/IPlayerManagerService/GetCurrentUsers" style="document" />
+    <wsdl:operation name="SavePlayerSession">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManagerService/SavePlayerSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemovePlayerSession">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManagerService/RemovePlayerSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePlayerSession">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManagerService/UpdatePlayerSession" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -469,24 +477,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SavePlayerSession">
-      <soap12:operation soapAction="http://tempuri.org/IFriendListService/SavePlayerSession" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RemovePlayerSession">
-      <soap12:operation soapAction="http://tempuri.org/IFriendListService/RemovePlayerSession" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AcceptFriendRequest">
       <soap12:operation soapAction="http://tempuri.org/IFriendListService/AcceptFriendRequest" style="document" />
       <wsdl:input>
@@ -498,15 +488,6 @@
     </wsdl:operation>
     <wsdl:operation name="RejectFriendRequest">
       <soap12:operation soapAction="http://tempuri.org/IFriendListService/RejectFriendRequest" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UpdatePlayerSession">
-      <soap12:operation soapAction="http://tempuri.org/IFriendListService/UpdatePlayerSession" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

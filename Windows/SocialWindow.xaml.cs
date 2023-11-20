@@ -40,9 +40,9 @@ namespace CodeNamesClientSide.Windows
 
             // Initialize PlayerClient and PlayerManagerClient
             InstanceContext context = new InstanceContext(this);
-            playerService = new CodeNamesService.PlayerManagerServiceClient();
+            playerService = new CodeNamesService.PlayerManagerServiceClient(context);
             sessionService = new CodeNamesService.FriendListServiceClient(context);
-            sessionService.UpdatePlayerSession(idPlayer);
+            playerService.UpdatePlayerSession(idPlayer);
 
             ShowFriends(idPlayer);
         }

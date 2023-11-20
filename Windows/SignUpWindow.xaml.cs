@@ -52,9 +52,8 @@ namespace CodeNamesClientSide.Windows
             email = TbEmail.Text;
             string password = new NetworkCredential(string.Empty, PbPassword.SecurePassword).Password;
             string confirmationPassword = new NetworkCredential(string.Empty, PbConfirmPassword.SecurePassword).Password;
-
-
-            CodeNamesService.PlayerManagerServiceClient client = new CodeNamesService.PlayerManagerServiceClient();
+            InstanceContext context = new InstanceContext(this);
+            CodeNamesService.PlayerManagerServiceClient client = new CodeNamesService.PlayerManagerServiceClient(context);
 
 
             if (CheckFields())
